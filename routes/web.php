@@ -2,30 +2,42 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Http\Controllers\HomepageController; 
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('home');
 
-Route::get('/produk', function () {
-    return 'halaman produk';
-});
+Route::get('/',[HomepageController::class,'index']); 
 
-Route::get('/keranjang', function () {
-    return 'halaman keranjang';
-});
+Route::get('/product', [HomepageController::class, 'products']);
 
-Route::get('/pesanan', function () {
-    return 'halaman persanan';
-});
+Route::get('/', [HomepageController::class, 'index']); 
+Route::get('products', [HomepageController::class, 'products']); 
+Route::get('product/{slug}', [HomepageController::class, 'product']); 
+Route::get('categories',[HomepageController::class, 'categories']); 
+Route::get('category/{slug}', [HomepageController::class, 'category']); 
+Route::get('cart', [HomepageController::class, 'cart']); 
+Route::get('checkout', [HomepageController::class, 'checkout']); 
 
-Route::get('/pembayaran', function () {
-    return 'halaman pembayaran';
-});
+// Route::get('/homepage', function(){
+//     return view('web.homepage');
+//     });
 
-Route::get('/profil', function () {
-    return 'halaman profil pengguna';
-});
+Route::get('/products', function(){
+    return view('web.produk');
+    });
+
+// Route::get('/pesanan', function(){
+//     return view('web.homepage');
+//     });
+
+// Route::get('/riwayat pesanan', function(){
+//     return view('web.homepage');
+//     });
+// Route::get('/lacak pesanan', function(){
+//     return view('web.homepage');
+//     });
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
