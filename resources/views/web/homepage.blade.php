@@ -10,7 +10,7 @@
                     <p class="card-text">
                         {{ $category['description'] }}
                     </p>
-                    <a href="/category/{{ $category['slug'] }}" class="btn
+                    <a href="/products/{{ $category['slug'] }}" class="btn
 btn-primary">Detail</a>
                 </div>
             </div>
